@@ -5,8 +5,7 @@
     options:{
       columnsToFix: [0],
       minWidth: 930,
-      maxWidth: 9999,
-      active: true
+      maxWidth: 9999
     }
   };
 
@@ -35,17 +34,19 @@
     rt.options = o;
     rt.isTableResponsive = false;
 
-    $(window).load(function(){rt.updateTable()});
+    $(document).ready(function(){rt.updateTable()});
+
+    //TODO SAA: Find a solution to fix the resizing
+    //$(window).resize(function(){rt.updateTable()}).trigger('resize');
 
     rt.updateTable = function(){
-      console.log('update');
-        if (($(window).width() > o.minWidth) && !rt.isTableResponsive ){      
+        if (($(window).width() > o.minWidth) && !rt.isTableResponsive && $(window).width() < o.maxWidth){      
           rt.splitTable();
           rt.isTableResponsive = true;
           return true;
         }
 
-        else if (rt.isTableResponsive && ($(window).width() < o.minWidth)) {
+        else if (rt.isTableResponsive && $(window).width() < o.minWidth && $(window).width() > o.maxWidth){
           rt.unsplitTable($(table));
           rt.isTableResponsive = false;
         }
@@ -64,6 +65,8 @@
             
         $(rt.tableCopy).wrap("<div class='pinned' />");
         $(rt.table).wrap("<div class='scrollable' />");
+
+        rt.setCellHeights();
     }
 
     rt.removeSelectedElements = function(allTableRows, isOriginal)
