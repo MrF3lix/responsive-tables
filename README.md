@@ -35,6 +35,6 @@ The maxWidth defines the maxium width for the responsive table. Above this width
 
 ##Things that don't work yet
 
-1. The plugin cannot update the table on the ``javascript $(window).resize(); ``
+Currently nothing. Let me know if you find something!
 
 
