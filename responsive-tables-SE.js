@@ -36,8 +36,10 @@
 
     $(document).ready(function(){rt.updateTable()});
 
-    //TODO SAA: Find a solution to fix the resizing
-    //$(window).resize(function(){rt.updateTable()}).trigger('resize');
+    $(window).on('resize', function(){
+      console.log('window resizes');
+      rt.updateTable(); 
+    });
 
     rt.updateTable = function(){
         if (($(window).width() > o.minWidth) && !rt.isTableResponsive && $(window).width() < o.maxWidth){      
@@ -46,8 +48,8 @@
           return true;
         }
 
-        else if (rt.isTableResponsive && $(window).width() < o.minWidth && $(window).width() > o.maxWidth){
-          rt.unsplitTable($(table));
+        else if (rt.isTableResponsive && $(window).width() < o.minWidth || $(window).width() > o.maxWidth){
+          rt.unsplitTable($(rt.table));
           rt.isTableResponsive = false;
         }
     }
@@ -66,7 +68,7 @@
         $(rt.tableCopy).wrap("<div class='pinned' />");
         $(rt.table).wrap("<div class='scrollable' />");
 
-        rt.setCellHeights();
+        //rt.setCellHeights();
     }
 
     rt.removeSelectedElements = function(allTableRows, isOriginal)
