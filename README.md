@@ -1,4 +1,4 @@
-# responsive-tables
+# Responsive-tables-SE
 All changes are pased on the original repository from ZURB (https://github.com/zurb/responsive-tables)!
 Tables that work responsively on small devices.
 
@@ -35,6 +35,8 @@ The maxWidth defines the maxium width for the responsive table. Above this width
 
 ##Things that don't work yet
 
-Currently nothing. Let me know if you find something!
+1. The height of the cells cannot be adjusted yet. [WIP]
+2. Problems while using footable with it [OPEN]
+
 
 
