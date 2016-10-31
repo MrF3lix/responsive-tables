@@ -95,10 +95,14 @@
             
             var allTableRowsOriginal = $(rt.table).find('tr');
             var allTableRowsCopy = $(rt.tableCopy).find('tr');
-
-            Promise.all([rt.removeSelectedElements(allTableRowsOriginal, true), rt.removeSelectedElements(allTableRowsCopy, false)]).then(function() {
+            
+            rt.removeSelectedElements(allTableRowsOriginal, true);
+            rt.removeSelectedElements(allTableRowsCopy, false);
+            
+            //TODO: Remove hack -> use promises to call the funciton after the tables are fully loaded
+            setTimeout(function () {
                 rt.setCellHeights();
-            });
+            }, 700);
         }
         
         rt.unsplitTable = function () {
