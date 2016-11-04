@@ -96,13 +96,8 @@
             var allTableRowsOriginal = $(rt.table).find('tr');
             var allTableRowsCopy = $(rt.tableCopy).find('tr');
             
-            rt.removeSelectedElements(allTableRowsOriginal, true);
-            rt.removeSelectedElements(allTableRowsCopy, false);
-            
-            //TODO: Remove hack -> use promises to call the funciton after the tables are fully loaded
-            setTimeout(function () {
-                rt.setCellHeights();
-            }, 700);
+            rt.removeSelectedElements(allTableRowsOriginal, true, rt.setCellHeights);
+            rt.removeSelectedElements(allTableRowsCopy, false, rt.setCellHeights);
         }
         
         rt.unsplitTable = function () {
@@ -133,23 +128,21 @@
             });
         }
 
-        rt.removeSelectedElements = function(allTableRows, isOriginal) {
-            return new Promise(function() {
-                $.each(allTableRows, function(key, value) {
-                    var allTableEntries = $(value).find('> td, > th');
+        rt.removeSelectedElements = function(allTableRows, isOriginal, callback) {
+            $.each(allTableRows, function(key, value) {
+                var allTableEntries = $(value).find('> td, > th');
 
-                    $.each(allTableEntries, function(keyEntry, valueEntry) {
-                        if (isOriginal && $.inArray(keyEntry, rt.options.columnsToFix) !== -1) {
-                            $(valueEntry).hide();
-                        }
+                $.each(allTableEntries, function(keyEntry, valueEntry) {
+                    if (isOriginal && $.inArray(keyEntry, rt.options.columnsToFix) !== -1) {
+                        $(valueEntry).hide();
+                    }
 
-                        if (!isOriginal && $.inArray(keyEntry, rt.options.columnsToFix) === -1) {
-                            $(valueEntry).hide();
-                        }
-                    });
+                    if (!isOriginal && $.inArray(keyEntry, rt.options.columnsToFix) === -1) {
+                        $(valueEntry).hide();
+                    }
                 });
-                return true;
             });
+            callback();
         };
 
         rt.init();
