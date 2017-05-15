@@ -3,7 +3,7 @@ All changes are pased on the original repository from ZURB (https://github.com/z
 Tables that work responsively on small devices.
 
 
-##Improvements
+## Improvements
 
 1. The plugin is now object oriented written. This change was made because it is easier to add new functionality to it and it's easier for another developer to understand.
 
@@ -16,7 +16,7 @@ $('table').responsiveTable();
 
 4. Which columns are fixed and which are sliding can now be defined in the options. This way it is easy to define which column is always fixed. [see options]
 
-##Options
+## Options
 
 ```javascript
 columnsToFix: new Array()
@@ -33,7 +33,7 @@ maxWidth: 99
 ```
 The maxWidth defines the maxium width for the responsive table. Above this width the table will be displayed as usual.
 
-##Things that don't work yet
+## Things that don't work yet
 
 1. Problems while using footable with it [OPEN]
 
