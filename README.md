@@ -1,11 +1,11 @@
  # Responsive-tables-SE
-All changes are pased on the original repository from ZURB (https://github.com/zurb/responsive-tables)!
+All changes are based on the original repository from ZURB (https://github.com/zurb/responsive-tables)!
 Tables that work responsively on small devices.
 
 
 ## Improvements
 
-1. The plugin is now object oriented written. This change was made because it is easier to add new functionality to it and it's easier for another developer to understand.
+1. The plugin is rewriten. This change was made because it is easier to add new functionality to it and it's easier for another developer to understand.
 
 2. The plugin needs to be initialized from now. The reason behind it is to add options to the plugin which makes it more usable. The responsive table will be initialized like this:
 
